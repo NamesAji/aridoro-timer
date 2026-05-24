@@ -1,0 +1,425 @@
+/* =========================================
+   GLOBAL ENVIRONMENT & TYPOGRAPHY
+   ========================================= */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; 
+  background-color: transparent; 
+  user-select: none; 
+  -webkit-user-select: none; 
+}
+
+@font-face {
+  font-family: 'NormalFont';
+  src: url('/assets/NormalFont.ttf') format('truetype'); 
+}
+
+@font-face {
+  font-family: 'BoldFont';
+  src: url('/assets/BoldFont.ttf') format('truetype'); 
+}
+
+/* Enforce nearest-neighbor scaling for pixel art */
+img, canvas, div {
+  image-rendering: pixelated;
+}
+
+/* Prevent native drag-and-drop ghosting on assets */
+img {
+  -webkit-user-drag: none; 
+}
+
+/* =========================================
+   APPLICATION CANVAS
+   ========================================= */
+
+#app-container {
+  width: 256px;  
+  height: 256px; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+  overflow: hidden;
+}
+
+/* =========================================
+   COMPONENT: BACKGROUND ANIMATIONS
+   ========================================= */
+
+#bg-container {
+  position: absolute;
+  top: 20px;  /* Offset below title bar */
+  left: 2px;
+  width: calc(100% - 4px); 
+  height: 147px; /* Fixed height to prevent timer UI overlap */
+  z-index: 1;
+  overflow: hidden; /* Clip to window frame */
+}
+
+#bg-night,
+#bg-day {
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  width: 100%;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#base-interface {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2; 
+  pointer-events: none; 
+}
+
+#ui-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5; 
+}
+
+/* =========================================
+   COMPONENT: WINDOW CONTROLS
+   ========================================= */
+
+#titlebar-hitbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20px; 
+  z-index: 10; 
+}
+
+.invisible-btn {
+  position: absolute; 
+  width: 9px; 
+  height: 9px;
+  padding: 0; 
+  margin: 0;
+  min-width: 0;
+  min-height: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  -webkit-app-region: no-drag; 
+}
+
+#minimize-btn {
+  top: 6px; 
+  right: 19px; 
+}
+
+#close-btn {
+  top: 6px; 
+  right: 6px; 
+}
+
+/* =========================================
+   COMPONENT: POMODORO TIMER
+   ========================================= */
+
+#bg-timer {
+  position: absolute;
+  top: 167px;
+  left: 80px;
+}
+
+#time-display {
+  position: absolute;
+  top: 167px; 
+  left: 79px; 
+  width: 100px; 
+  text-align: center;
+  font-size: 44px;
+  color: #17495d; 
+  font-family: 'BoldFont', monospace;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+}
+
+/* Shared coordinates for timer controls */
+#btn-timer-pause,
+#btn-timer-resume,
+#btn-timer-start {
+  top: 215px; 
+  left: 80px; 
+}
+
+#btn-timer-skip {
+  top: 215px; 
+  left: 144px; 
+}
+
+/* =========================================
+   COMPONENT: THEME TOGGLE
+   ========================================= */
+
+#btn-theme-toggle {
+  position: absolute;
+  top: 136px; /* Offset below title bar */
+  right: 6px; /* Right align */
+  z-index: 6; 
+}
+
+/* =========================================
+   COMPONENT: MUSIC CONTROLS
+   ========================================= */
+
+/* Interchangeable background states */
+#music-bar,
+#volume-bar {
+  position: absolute;
+  top: 234px;
+  left: 31px; /* Align adjacent to volume button */
+  pointer-events: none;
+}
+
+/* Clipping mask for scrolling text */
+#music-display-container {
+  position: absolute;
+  top: 230px; /* Y-offset for UI bar alignment */
+  left: 32px; 
+  width: 91px; /* Prevent text overflow into timer UI */
+  height: 22px; 
+  z-index: 6;
+  overflow: hidden; 
+  white-space: nowrap;
+}
+
+/* Scrolling text element */
+#music-display {
+  display: inline-block;
+  font-family: 'NormalFont', monospace;
+  color: #17495d;
+  font-size: 9px;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+  padding-left: 4%; 
+  /*animation: scrollText 8s linear infinite; */
+}
+
+@keyframes scrollText {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Track playback timer */
+#music-timer {
+  position: absolute;
+  top: 236px; 
+  left: 125px; /* Fixed left anchor */
+  width: 48px; 
+  font-family: 'NormalFont', monospace;
+  color: #17495d;
+  font-size: 10px;
+  text-align: center; 
+  margin-top: 0px;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* Volume slider UI */
+#volume-control-layer {
+  position: absolute;
+  top: 236px; 
+  left: 35px; 
+  width: 130px; /* Match inner width of volume bar */
+  height: 12px; 
+  z-index: 7;
+}
+
+#vol-text-left, 
+#vol-text-right {
+  position: absolute;
+  top: 1px; 
+  font-family: 'NormalFont', monospace;
+  color: #17495d;
+  font-size: 9px;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+  pointer-events: none; 
+}
+
+#vol-text-left { left: 0; }
+#vol-text-right { 
+  right: -7px; 
+  width: 25px; 
+  text-align: right; 
+}
+
+/* Draggable area boundaries */
+#vol-slider-bounds {
+  position: absolute;
+  left: 32px; /* Offset past label */
+  top: 0px; 
+  width: 78px; /* Match width to slider fill image */
+  height: 12px; 
+  cursor: pointer;
+}
+
+#vol-bg { 
+  position: absolute; 
+  top: 3px; 
+  left: 0; 
+  pointer-events: none; 
+}
+
+#vol-fill-mask {
+  position: absolute;
+  top: 3px; 
+  left: 0;
+  height: 4px; 
+  width: 100%; 
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#vol-fill { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+}
+
+#vol-handle {
+  position: absolute;
+  top: 0px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  pointer-events: none; 
+}
+
+/* =========================================
+   COMPONENT: MUSIC BUTTONS
+   ========================================= */
+
+#btn-volume {
+  top: 226px; 
+  left: 7px;
+}
+
+/* Shared Y-coordinate for playback controls */
+#btn-music-prev,
+#btn-music-play,
+#btn-music-pause,
+#btn-music-skip {
+  position: absolute;
+  top: 234px; 
+}
+
+#btn-music-prev { left: 176px; }
+#btn-music-play, #btn-music-pause { left: 193px; }
+#btn-music-skip { left: 210px; }
+
+/* =========================================
+   COMPONENT: SETTINGS
+   ========================================= */
+
+#btn-settings {
+  top: 226px;
+  left: 227px;
+}
+
+#settings-overlay {
+  position: absolute;
+  top: 21px; 
+  left: 5px; 
+  
+  /* Dimensions map to background_settings_menu.png */
+  width: 246px; 
+  height: 139px;
+  
+  z-index: 8; 
+}
+
+#settings-bg {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  pointer-events: none; 
+}
+
+/* Value box containers */
+.val-container {
+  position: absolute;
+  /* Dimensions map to value_box.png */
+  width: 42px;  
+  height: 14px; 
+}
+
+.val-box-bg {
+  position: absolute;
+  top: 0; left: 0;
+  pointer-events: none;
+}
+
+/* Arrow button hitboxes */
+.invisible-arrow-btn {
+  position: absolute;
+  top: 0;
+  width: 8px; /* Match drawn arrow width */
+  height: 90%; 
+  padding: 0; margin: 0;
+  background: transparent;
+  border: none; outline: none;
+  cursor: pointer;
+}
+
+.left-arrow { left: 0; }
+.right-arrow { right: 0; }
+
+/* Value display text */
+.settings-val {
+  position: absolute;
+  top: 0px; 
+  left: 12px; 
+  width: calc(100% - 24px); /* Fill space between arrow hitboxes */
+  font-family: 'BoldFont', monospace;
+  color: #17495d; 
+  font-size: 14px; 
+  text-align: center;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+/* Element positioning */
+#chk-auto-work { top: 41px; left: 98px; }
+#chk-auto-break { top: 41px; left: 228px; }
+
+#container-work { top: 64px; left: 68px; }
+#container-break { top: 64px; left: 198px; }
+#container-alarm { top: 88px; left: 68px; }
+#container-cheeto { top: 88px; left: 198px; }
+#container-size { top: 113px; left: 134px; }
+
+/* =========================================
+   UTILITIES & STATES
+   ========================================= */
+   
+.clickable-sprite {
+  position: absolute;
+  cursor: pointer;
+  transition: filter 0.1s;
+}
+
+.clickable-sprite:hover {
+  filter: brightness(1.2); 
+}
+
+.hidden {
+  display: none !important;
+}

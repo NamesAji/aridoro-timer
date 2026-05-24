@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aridoro Timer</title>
+    
+    <link rel="icon" type="image/png" href="/assets/app_icon.png" />
+    
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app-container">
+      
+      <img src="/assets/aritai_nighttime.gif" id="bg-night" alt="Night Background" />
+      <img src="/assets/aritai_daytime.gif" id="bg-day" alt="Day Background" />
+      <img src="/assets/app_interface.png" id="base-interface" alt="App Frame" />
+
+      <div id="titlebar-hitbox" data-tauri-drag-region>
+        <button id="minimize-btn" class="invisible-btn"></button>
+        <button id="close-btn" class="invisible-btn"></button>
+      </div>
+
+      <div id="ui-layer">
+        
+        <img src="/assets/button_darkmode.png" id="btn-theme-toggle" class="clickable-sprite" alt="Toggle Theme" />
+        <img src="/assets/background_timer.png" id="bg-timer" alt="Timer Background" />
+        <div id="time-display">24:17</div>
+        
+        <img src="/assets/button_pause.png" id="btn-timer-pause" class="clickable-sprite hidden" alt="Pause Timer" />
+        <img src="/assets/button_resume.png" id="btn-timer-resume" class="clickable-sprite hidden" alt="Resume Timer" />
+        <img src="/assets/button_start.png" id="btn-timer-start" class="clickable-sprite" alt="Start Timer" /> 
+        <img src="/assets/button_skip.png" id="btn-timer-skip" class="clickable-sprite" alt="Skip Phase" />
+        
+        <img src="/assets/button_volume.png" id="btn-volume" class="clickable-sprite" alt="Toggle Volume" />
+        
+        <img src="/assets/button_music_prev.png" id="btn-music-prev" class="clickable-sprite" alt="Previous Track" />
+        <img src="/assets/button_music_resume.png" id="btn-music-play" class="clickable-sprite" alt="Play Music" />
+        <img src="/assets/button_music_pause.png" id="btn-music-pause" class="clickable-sprite hidden" alt="Pause Music" />
+        <img src="/assets/button_music_skip.png" id="btn-music-skip" class="clickable-sprite" alt="Skip Track" />
+        
+        <img src="/assets/background_music.png" id="music-bar" alt="Music Info Bar" />
+        <img src="/assets/background_volume.png" id="volume-bar" class="hidden" alt="Volume Background" />
+        
+       <div id="music-display-container">
+          <div id="music-display">test1</div>
+        </div>
+        
+        <div id="music-timer">0:00/0:00</div>
+
+        <div id="volume-control-layer" class="hidden">
+          <div id="vol-text-left">Volume:</div>
+          
+          <div id="vol-slider-bounds">
+            <img src="/assets/volume_slider_background.png" id="vol-bg" />
+            
+            <div id="vol-fill-mask">
+              <img src="/assets/volume_slider_fill.png" id="vol-fill" />
+            </div>
+            
+            <img src="/assets/volume_slider_handle.png" id="vol-handle" />
+          </div>
+          
+          <div id="vol-text-right">50%</div>
+        </div>
+
+        <img src="/assets/button_settings.png" id="btn-settings" class="clickable-sprite" alt="Open Settings" />
+
+      </div>
+
+      <div id="settings-overlay" class="hidden">
+          <img src="/assets/background_settings_menu.png" id="settings-bg" alt="Settings Background" />
+
+          <img src="/assets/checkbox_off.png" id="chk-auto-work" class="clickable-sprite" />
+          <img src="/assets/checkbox_off.png" id="chk-auto-break" class="clickable-sprite" />
+
+          <div id="container-work" class="val-container">
+            <img src="/assets/value_box.png" class="val-box-bg" />
+            <button id="btn-work-down" class="invisible-arrow-btn left-arrow"></button>
+            <div id="val-work-length" class="settings-val">25m</div>
+            <button id="btn-work-up" class="invisible-arrow-btn right-arrow"></button>
+          </div>
+
+          <div id="container-break" class="val-container">
+            <img src="/assets/value_box.png" class="val-box-bg" />
+            <button id="btn-break-down" class="invisible-arrow-btn left-arrow"></button>
+            <div id="val-break-length" class="settings-val">5m</div>
+            <button id="btn-break-up" class="invisible-arrow-btn right-arrow"></button>
+          </div>
+
+          <div id="container-alarm" class="val-container">
+            <img src="/assets/value_box.png" class="val-box-bg" />
+            <button id="btn-alarm-down" class="invisible-arrow-btn left-arrow"></button>
+            <div id="val-alarm-vol" class="settings-val">100%</div>
+            <button id="btn-alarm-up" class="invisible-arrow-btn right-arrow"></button>
+          </div>
+
+          <div id="container-cheeto" class="val-container">
+            <img src="/assets/value_box.png" class="val-box-bg" />
+            <button id="btn-cheeto-down" class="invisible-arrow-btn left-arrow"></button>
+            <div id="val-cheeto-vol" class="settings-val">75%</div>
+            <button id="btn-cheeto-up" class="invisible-arrow-btn right-arrow"></button>
+          </div>
+
+          <div id="container-size" class="val-container">
+            <img src="/assets/value_box.png" class="val-box-bg" />
+            <button id="btn-size-down" class="invisible-arrow-btn left-arrow"></button>
+            <div id="val-window-size" class="settings-val">1x</div>
+            <button id="btn-size-up" class="invisible-arrow-btn right-arrow"></button>
+          </div>
+        </div>
+
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
