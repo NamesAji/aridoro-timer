@@ -3,7 +3,7 @@
 Do you have trouble focusing on your work or studies? Do you wish you had some sort of companion to help you focus? Do you like cute catgirls?
 Let me introduce to you, the Aridoro (aritai + Pomodoro) Timer! A lightweight Pomodoro Timer with a comfy pixelated theme and a catgirl that will work alongside you!
 
-![Aridoro Timer Screenshot](./assets/app_preview.png)
+![Aridoro Timer Screenshot](./src/assets/app_preview.png)
 
 ## ✨ Features
 * **Customizable Intervals:** Set your perfect work and break lengths directly in the app.
