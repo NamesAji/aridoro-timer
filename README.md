@@ -14,7 +14,7 @@ Let me introduce to you, the Aridoro (aritai + Pomodoro) Timer! A lightweight Po
 ## 📥 Download
 Head over to the [Releases page](https://github.com/YOUR-USERNAME/aridoro-timer/releases/latest) to download the latest version for your operating system:
 
-* 🪟 **Windows:** Download the `.msi` (Installer) or the standalone `.exe` file.
+* 🖥️ **Windows:** Download the `.msi` (Installer) or the standalone `.exe` file.
 * 🍎 **Mac:** Download the `.dmg` or `.app` file.
 * 🐧 **Linux:** Download the `.AppImage` or `.deb` file.
 
@@ -24,4 +24,4 @@ Head over to the [Releases page](https://github.com/YOUR-USERNAME/aridoro-timer/
 * Rust
 
 ---
-*Created by Aji*
+*Made by **Aji**. Heard he's pretty cool.*
