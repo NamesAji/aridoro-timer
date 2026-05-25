@@ -12,7 +12,7 @@ Let me introduce to you, the Aridoro (aritai + Pomodoro) Timer! A lightweight Po
 * **Lightweight & Fast:** Built with speed and size in mind, only using a fraction of the memory of standard desktop apps.
 
 ## 📥 Download
-Head over to the [Releases page](https://github.com/YOUR-USERNAME/aridoro-timer/releases/latest) to download the latest version for your operating system:
+Head over to the [Releases page](https://github.com/NamesAji/aridoro-timer/releases/latest) to download the latest version for your operating system:
 
 * 🖥️ **Windows:** Download the `.msi` (Installer) or the standalone `.exe` file.
 * 🍎 **Mac:** Download the `.dmg` or `.app` file.
