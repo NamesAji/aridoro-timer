@@ -1,6 +1,7 @@
 # Aridoro Timer
 
 Do you have trouble focusing on your work or studies? Do you wish you had some sort of companion to help you focus? Do you like cute catgirls?
+
 Let me introduce to you, the Aridoro (aritai + Pomodoro) Timer! A lightweight Pomodoro Timer with a comfy pixelated theme and a catgirl that will work alongside you!
 
 ![Aridoro Timer Screenshot](./src/assets/app_preview.png)
@@ -24,4 +25,6 @@ Head over to the [Releases page](https://github.com/NamesAji/aridoro-timer/relea
 * Rust
 
 ---
-*Made by **Aji**. Heard he's pretty cool.*
+*Art made by [alexkovacsart](https://x.com/_resting_potato), please check out their [VGen](https://vgen.co/alexkovacsart)!*
+
+*App made by **Aji**. Heard he's pretty cool.*
